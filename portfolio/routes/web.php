@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+})->name("main");
+
+Route::prefix('/social-auth/github')->group(function () {
+    Route::get('/', function () {return Socialite::driver("github")->scopes(['groups'])->redirect();})->name('auth.social');
+    Route::get('/callback', Auth\SocialController::class)->name('auth.social.callback');
+
 });
