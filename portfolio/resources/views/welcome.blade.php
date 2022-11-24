@@ -11,13 +11,6 @@
 
     </head>
     <body class="antialiased">
-        @auth()
-            <h2>Вы авторизованы</h2>
-        @endauth
-        @guest()
-            <a href="{{ route('auth.social', 'github') }}">
-                Авторизация
-            </a>
-        @endguest
+
     </body>
 </html>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="{{asset("/css/style.css")}}">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/atom-one-light.min.css">
 
@@ -21,9 +21,20 @@
         <div class="header_item header_button">Редактор</div>
         <div class="header_item header_button">Архив</div>
       </div>
+
       <div class="header_section">
-        <div class="header_item header_button">Выход</div>
-        <div class="header_item header_button">Вход</div>
+          @auth()
+              <div class="header_item header_button">Выход</div>
+          @endauth
+          @guest()
+                  <div class="header_item header_button">
+                      <a href="{{ route('auth.social', 'github') }}" style="text-decoration: none; color: black">
+                          Вход
+                      </a>
+                  </div>
+          @endguest
+
+
       </div>
     </div>
 
@@ -220,7 +231,7 @@ text text text [link][smalltext] text text
 
 [smalltext]: link title
 ``
-И это будет выглядить так: 
+И это будет выглядить так:
 text text text [link][smalltext] text text
 
 [smalltext]: link title
@@ -231,16 +242,16 @@ text text text [link][smalltext] text text
 - Страница [Ссылки](https://docs.microsoft.com/ru-ru/contribute/how-to-write-links) в этом руководстве содержит сведения о дополнительном синтаксисе Markdig для ссылок.
 
 
-### Изображения 
+### Изображения
 
-Синтаксис Markdown для изображений очень схож с состоит из части `![image title]`, представляющей заголовок отображаемый при наведении, и части `(file-name.jpg)` — URL-адреса или имени файла, содержащего изображение: 
+Синтаксис Markdown для изображений очень схож с состоит из части `![image title]`, представляющей заголовок отображаемый при наведении, и части `(file-name.jpg)` — URL-адреса или имени файла, содержащего изображение:
 ``markdown
 ![Yes](https://i.imgur.com/sZlktY7.png)
 ``
 **Отображение**
 ![Yes](https://i.imgur.com/sZlktY7.png)
 
-Ссылки и изображения можно комбинировать: 
+Ссылки и изображения можно комбинировать:
 ``markdown
 [![Yes](https://i.imgur.com/sZlktY7.png)](https://i.imgur.com/sZlktY7.png)
 ``
@@ -248,7 +259,7 @@ text text text [link][smalltext] text text
 [![Yes](https://i.imgur.com/sZlktY7.png)](https://i.imgur.com/sZlktY7.png)
 
 
-### Сноски 
+### Сноски
 Подобным образом можно делать сноски в тексте на авторов или источники:
 ``markdown
 text text text word[^1] text text
@@ -342,11 +353,11 @@ CREATE TABLE T1 (
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
-    <script src="library/mdconverter.js"></script>
-    <script src="editor.js"></script>
-    <script src="jquery-3.6.1.min.js"></script>
-    <script src="jquery_cookie.js" type="text/javascript"></script>
-    <script src="codee.js"></script>
+    <script src="{{asset("/js/mdconverter.js")}}"></script>
+    <script src="{{asset("/js/editor.js")}}"></script>
+    <script src="{{asset("/js/jquery-3.6.1.min.js")}}"></script>
+    <script src="{{asset("/js/jquery_cookie.js")}}" type="text/javascript"></script>
+    <script src="{{asset("/js/codee.js")}}"></script>
 
 
 </body>

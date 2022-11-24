@@ -15,7 +15,7 @@ use Laravel\Socialite\Facades\Socialite;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 })->name("main");
 
 Route::prefix('/social-auth/github')->group(function () {
