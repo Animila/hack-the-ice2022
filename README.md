@@ -16,11 +16,11 @@
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)<br><br>
 
 ## Команда "Колибри"
-| Участник | Роль | ID Discord | 
-| ------ | ------ | ----- |
-| Христофоров Илья | Разработчик (тимлид) | Кирит Купер#0883 |
-| Клинтухова Настя | Дизайнер | mit#9518 |
-| Плескачевский Николай | Разработчик | NiPl#7820 |
-| Иванов Виталий | Менеджер (менеджер) | Xfan#8061 |
-| Клияненко Артур | Дизайнер | Klirick#6411 |
+| Участник | Роль                   | ID Discord | 
+| ------ |------------------------| ----- |
+| Христофоров Илья | Разработчик (тимлид)   | Кирит Купер#0883 |
+| Клинтухова Настя | Дизайнер               | mit#9518 |
+| Плескачевский Николай | Разработчик            | NiPl#7820 |
+| Иванов Виталий | Менеджер (разработчик) | Xfan#8061 |
+| Клияненко Артур | Дизайнер               | Klirick#6411 |
 
