@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,7 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/atom-one-light.min.css">
 
-    <title>MarkDown Editor</title>
+    <title>MPIT редактор</title>
 </head>
 
 <body>
@@ -24,14 +24,18 @@
 
       <div class="header_section">
           @auth()
-              <div class="header_item header_button">Выход</div>
+              <div class="header_item header_button">
+                  <a href="{{ route('auth.delete') }}" style="text-decoration: none; color: black">
+                      Выход
+                  </a>
+              </div>
           @endauth
           @guest()
-                  <div class="header_item header_button">
-                      <a href="{{ route('auth.social', 'github') }}" style="text-decoration: none; color: black">
-                          Вход
-                      </a>
-                  </div>
+              <div class="header_item header_button">
+                  <a href="{{ route('auth.social') }}" style="text-decoration: none; color: black">
+                      Вход
+                  </a>
+              </div>
           @endguest
 
 

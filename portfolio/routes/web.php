@@ -21,5 +21,6 @@ Route::get('/', function () {
 Route::prefix('/social-auth/github')->group(function () {
     Route::get('/', function () {return Socialite::driver("github")->scopes(['groups'])->redirect();})->name('auth.social');
     Route::get('/callback', Auth\SocialController::class)->name('auth.social.callback');
+    Route::get('/delete', function (){Auth\SocialAccount::where('id_user', auth()->id())->first()->delete();return back();})->name('auth.delete');
 
 });
