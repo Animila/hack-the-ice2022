@@ -15,6 +15,7 @@ class SelectController extends Controller
         $api = "https://api.github.com/repos/Animila/".$event."/contents/";
         $answer = $response->get($api);
         $list = $answer->json();
+        return [$answer, $list];
         $files = [];
         foreach ($list as $item) {
 
