@@ -7,6 +7,10 @@ body {
     letter-spacing: 0.4px;
     margin: 0px;
 }
+a {
+    text-decoration: none;
+    color: white;
+}
 .git {
     width: 95%;
     height: 25vh;
@@ -55,7 +59,7 @@ body {
     align-items: center;
 }
 
-.headerr {
+.header {
     display: flex;
     justify-content: space-between;
     background-color: #256D85;
@@ -71,12 +75,15 @@ body {
 .header_item {
     padding: 10px 15px;
     font-family: Arial;
+    text-decoration: none;
+    color: white;
 }
 
 .header_item:hover {
     padding: 10px 15px;
     font-family: Arial;
     cursor: pointer;
+    color: #6b7280;
 }
 
 textarea:focus, input:focus{
@@ -161,7 +168,7 @@ a {
 
 a:hover {
     color: rgb(0, 66, 110);
-    cursor: pointer;   
+    cursor: pointer;
 }
 
 br {
@@ -273,7 +280,7 @@ hr {
 }
 
 .menu .control-buttons .clear  {
-    
+
 }
 
 .menu .control-buttons .undo, .menu .control-buttons .redo, .menu .control-buttons .vert-line:nth-child(5) {

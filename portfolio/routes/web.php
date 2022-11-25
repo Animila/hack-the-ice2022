@@ -13,9 +13,15 @@ use Laravel\Socialite\Facades\Socialite;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () { return view('main');})->name('main');
-Route::get('/select', SelectController::class)->name('vibor');
-Route::get('/{nick}', Git\Account\GetController::class)->name("main.command");
+Route::get('/', function () {
+    return view('main');
+})->name('main');
+
+Route::prefix('/redactor')->group(function () {
+    Route::get('/', SelectController::class)->name('redactor.select');
+    Route::get('/{nick}', Git\Account\GetController::class)->name("redactor.index");
+});
+
 
 Route::prefix('/social-auth/github')->group(function () {
     Route::get('/', function () {return Socialite::driver("github")->scopes(['groups'])->redirect();})->name('auth.social');

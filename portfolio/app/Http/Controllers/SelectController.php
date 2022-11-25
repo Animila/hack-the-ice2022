@@ -10,12 +10,14 @@ class SelectController extends Controller
     public function __invoke()
     {
         $token = auth()->user()->token;
-        $event = "test_rep";
-        $response = Http::withToken($token);
-        $api = "https://api.github.com/repos/Animila/".$event."/contents/";
-        $answer = $response->get($api);
-        $list = $answer->body();
-        return [$answer, $list];
+        $api = "https://api.github.com/repos/Animila/".env('REPOSITORY')."/contents/";
+        $answer = Http::withToken($token)->get($api);
+        $list = $answer->json();
+//        print($api."<br>");
+//        print_r($answer);
+//        print($answer->status()."<br>");
+//        print_r($list);
+//        return '';
         $files = [];
         foreach ($list as $item) {
 
@@ -23,7 +25,7 @@ class SelectController extends Controller
                 $files[$item['name']] = [$item['name'], $item['type']];
             }
         }
-        return view('vibor', compact('files'));
+        return view('select', compact('files'));
 
     }
 }

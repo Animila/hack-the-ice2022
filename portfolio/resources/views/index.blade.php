@@ -1,51 +1,9 @@
-<!DOCTYPE html>
-<html lang="ru">
+@extends('layout.base')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="{{asset("/css/style.css")}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/atom-one-light.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-
-    <title>MPIT редактор</title>
-</head>
-
-<body>
-    <div class="headerr">
-      <div class="header_section">
-        <div class="header_item header_logo">#Дневник Хакатонщика</div>
-      </div>
-      <div class="header_section">
-        <div class="header_item header_button">Редактор</div>
-        <div class="header_item header_button">Архив</div>
-      </div>
-
-
-
-      <div class="header_section">
-          @auth()
-              <div class="header_item header_button">
-                  <a href="{{ route('auth.delete') }}" style="text-decoration: none; color: black">
-                      Выход
-                  </a>
-              </div>
-          @endauth
-          @guest()
-              <div class="header_item header_button">
-                  <a href="{{ route('auth.social') }}" style="text-decoration: none; color: black">
-                      Вход
-                  </a>
-              </div>
-          @endguest
-
-
-      </div>
-    </div>
+@section('content')
 
     <div class="git">
-          <div class="git_section">
+        <div class="git_section">
             <h2>
                 @auth()
                     <img src="{{auth()->user()->getAvatar()}}" alt="" height="50px" width="50px">
@@ -57,27 +15,27 @@
             </h2>
             <textarea class="commits"></textarea>
             <div>
-              <div class="btn_section">
-                <div class="btn_items"><button>Сохранить</button></div>
-                <div class="btn_items"><button>Загрузить</button></div>
-                <div class="btn_items"><button>Отправить</button></div>
-              </div>
+                <div class="btn_section">
+                    <div class="btn_items"><button>Сохранить</button></div>
+                    <div class="btn_items"><button>Загрузить</button></div>
+                    <div class="btn_items"><button>Отправить</button></div>
+                </div>
             </div>
-          </div>
-          <div class="git_section">
+        </div>
+        <div class="git_section">
             <h2>Дерево Гита</h2>
             <div id="multi-derevo" class="git_tree">
 
-              <h4><a href="#">{{$answer[0]}}</a></h4>
+                <h4><a href="#">{{$answer[0]}}</a></h4>
                 @foreach($answer[1] as $file)
-              <ul>
-                  <li><span><a>{{$file[0]}}</a></span>
-                  </li>
-               @endforeach
-              </ul>
+                    <ul>
+                        <li><span><a>{{$file[0]}}</a></span>
+                        </li>
+                        @endforeach
+                    </ul>
             </div>
-          </div>
         </div>
+    </div>
 
     <div class="page">
         <div class="menu">
@@ -359,14 +317,4 @@ CREATE TABLE T1 (
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
-    <script src="{{asset("/js/mdconverter.js")}}"></script>
-    <script src="{{asset("/js/editor.js")}}"></script>
-    <script src="{{asset("/js/jquery-3.6.1.min.js")}}"></script>
-    <script src="{{asset("/js/jquery_cookie.js")}}" type="text/javascript"></script>
-    <script src="{{asset("/js/codee.js")}}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
-</body>
-
-</html>
+@endsection

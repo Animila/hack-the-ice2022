@@ -14,7 +14,7 @@ class SocialController extends Controller
         $social_user = Socialite::driver("github")->user();
         $user = $this->findOrCreateUser($social_user);
         Auth::login($user);
-        return redirect()->route('vibor');
+        return redirect()->route('main');
 
     }
 
