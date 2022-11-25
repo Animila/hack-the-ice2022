@@ -13,10 +13,10 @@ class SelectController extends Controller
         $api = "https://api.github.com/repos/Animila/".env('REPOSITORY')."/contents/";
         $answer = Http::withToken($token)->get($api);
         $list = $answer->json();
-//        print($api."<br>");
-//        print_r($answer);
-//        print($answer->status()."<br>");
-//        print_r($list);
+        print($api."<br>");
+        print_r($answer);
+        print($answer->status()."<br>");
+        print_r($list);
 //        return '';
         $files = [];
         foreach ($list as $item) {
