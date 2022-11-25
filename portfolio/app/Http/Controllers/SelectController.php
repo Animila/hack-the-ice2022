@@ -13,6 +13,7 @@ class SelectController extends Controller
         $event = "test_rep";
         $response = Http::withToken($token);
         $api = "https://api.github.com/repos/".auth()->user()->nickname."/".$event."/contents/";
+        return $api;
         $answer = $response->get($api);
         $list = $answer->json();
         $files = [];
