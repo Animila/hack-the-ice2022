@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'event'=>env('REPOSITORY'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

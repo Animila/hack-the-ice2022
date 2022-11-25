@@ -13,7 +13,7 @@ class GetController extends Controller
     {
         $token = auth()->user()->token;
         $response = Http::withToken($token);
-        $api = "https://api.github.com/repos/Animila/".env('REPOSITORY')."/contents/".$nick;
+        $api = "https://api.github.com/repos/Animila/".config('app.event')."/contents/".$nick;
         $answer =  $this->getTree($response, $api, $nick);
         return view('index', compact('answer'));
     }

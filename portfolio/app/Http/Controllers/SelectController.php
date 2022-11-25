@@ -10,7 +10,7 @@ class SelectController extends Controller
     public function __invoke()
     {
         $token = auth()->user()->token;
-        $api = "https://api.github.com/repos/Animila/".env('REPOSITORY')."/contents/";
+        $api = "https://api.github.com/repos/Animila/".config('app.event')."/contents/";
         $answer = Http::withToken($token)->get($api);
         $list = $answer->json();
         print($api."<br>");
