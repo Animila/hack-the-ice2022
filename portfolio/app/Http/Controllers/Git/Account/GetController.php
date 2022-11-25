@@ -14,7 +14,7 @@ class GetController extends Controller
         $token = auth()->user()->token;
         $event = "test_rep";
         $response = Http::withToken($token);
-        $api = "https://api.github.com/repos/".auth()->user()->nickname."/".$event."/contents/".$nick;
+        $api = "https://api.github.com/repos/Animila/".$event."/contents/".$nick;
         $answer =  $this->getTree($response, $api, $nick);
         return view('index', compact('answer'));
     }
