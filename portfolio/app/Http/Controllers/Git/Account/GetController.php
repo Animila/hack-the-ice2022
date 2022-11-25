@@ -15,6 +15,7 @@ class GetController extends Controller
         $response = Http::withToken($token);
         $api = "https://api.github.com/repos/Animila/".config('app.event')."/contents/".$nick;
         $answer =  $this->getTree($response, $api, $nick);
+
         return view('index', compact('answer'));
     }
 
@@ -32,9 +33,14 @@ class GetController extends Controller
                 $this->getTree($response, $api_child);
             }
             if ($item['type'] == 'file') {
-                $files[$item['name']] = [$item['name'], $item['type']];
+                $files[$item['name']]
+                    = [
+                        'name'=>$item['name'],
+                        'url'=>$item['download_url']];
             }
         }
+        print_r($files);
+
         return [$nick, $files];
 
     }
