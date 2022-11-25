@@ -24,3 +24,5 @@ Route::prefix('/social-auth/github')->group(function () {
     Route::get('/delete', function (){auth()->logout(); return back();})->name('auth.delete');
 
 });
+
+Route::get('/git', Git\Account\GetController::class)->name('list.repo');

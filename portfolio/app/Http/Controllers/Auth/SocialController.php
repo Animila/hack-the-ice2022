@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\SocialAccount;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -27,38 +25,20 @@ class SocialController extends Controller
         //если аккаунт был уже зареган на пользователя, возвращаем его
         if ($user = $this->findUserBySocialId($social_user->getId())) {return $user;}
 
-        // если почта уже существует в базе данных, то добавляем запись в базу и возвращаем пользователя
-        if ($user = $this->findUserByEmail($social_user->getEmail())) {
-            $this->addSocialAccount($user, $social_user);
-
-            return $user;
-        }
-
         //создаем пользователя
         $user = User::create([
             'nickname' => $social_user->getNickname(),
             'email' => $social_user->getEmail(),
+            'id_provider' => $social_user->getId(),
+            'token' => $social_user->token,
         ]);
-
-        $this->addSocialAccount($user, $social_user);
 
         return $user;
     }
 
     public function findUserBySocialId($id)
     {
-        $socialAccount = SocialAccount::where('id_provider', $id)->first();
-        return $socialAccount ? $socialAccount->user : false;
+        return User::where('id_provider', $id)->first();
     }
 
-    public function findUserByEmail($email){return !$email ? null : User::where('email', $email)->first();}
-
-    public function addSocialAccount($user, $socialiteUser)
-    {
-        SocialAccount::create([
-            'id_user' => $user->id,
-            'id_provider' => $socialiteUser->getId(),
-            'token' => $socialiteUser->token,
-        ]);
-    }
 }

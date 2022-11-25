@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="{{asset("/css/style.css")}}">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/atom-one-light.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/atom-one-light.min.css">
 
     <title>MPIT редактор</title>
 </head>
@@ -44,7 +43,15 @@
 
     <div class="git">
           <div class="git_section">
-            <h2>RTForce</h2>
+            <h2>
+                @auth()
+                    <img src="{{auth()->user()->getAvatar()}}" alt="" height="50px" width="50px">
+                    {{auth()->user()->nickname}}
+                @endauth
+                @guest()
+                    Нет профиля
+                @endguest
+            </h2>
             <textarea class="commits"></textarea>
             <div>
               <div class="btn_section">
