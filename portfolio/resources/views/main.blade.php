@@ -67,14 +67,7 @@
           <div class="git_section">
             <h2>Дерево Гита</h2>
             <div id="multi-derevo" class="git_tree">
-
-              <h4><a href="#">{{$answer[0]}}</a></h4>
-                @foreach($answer[1] as $file)
-              <ul>
-                  <li><span><a>{{$file[0]}}</a></span>
-                  </li>
-               @endforeach
-              </ul>
+                Отсутствует
             </div>
           </div>
         </div>

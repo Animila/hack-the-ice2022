@@ -4,41 +4,39 @@ namespace App\Http\Controllers\Git\Account;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
+use PhpOption\None;
 
 class GetController extends Controller
 {
-    public function __invoke()
+
+    public function __invoke($nick)
     {
         $token = auth()->user()->token;
-        $event = "JSON_APPS";
+        $event = "test_rep";
         $response = Http::withToken($token);
-        $api = "https://api.github.com/repos/".auth()->user()->nickname."/".$event."/contents/";
-        $this->getTree($response, $api);
-
-        return '';
+        $api = "https://api.github.com/repos/".auth()->user()->nickname."/".$event."/contents/".$nick;
+        $answer =  $this->getTree($response, $api, $nick);
+        return view('index', compact('answer'));
     }
 
 
 
-    private function getTree($response, $api) {
+    public function getTree($response, $api, $nick=None) {
         $answer = $response->get($api);
         $list = $answer->json();
-//        $count($list)
+        $files = [];
         foreach ($list as $item) {
 
             if ($item["type"] == "dir" ) {
-                print('<br><h1>ПАПКА</h1><br>');
-                print($item['name']);
-                print($api.$item['name'].'/');
+                $files[$item['name']] = [$item['name'], $item['type']];
                 $api_child = $api.$item['name'].'/';
-                print('<br>');
                 $this->getTree($response, $api_child);
             }
             if ($item['type'] == 'file') {
-                print($item['name']);
-                print('<br><br>');
+                $files[$item['name']] = [$item['name'], $item['type']];
             }
         }
+        return [$nick, $files];
 
     }
 }
