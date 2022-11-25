@@ -17,7 +17,11 @@ class User extends Authenticatable
     public function getAvatar() {
         $token = $this->where('id', auth()->user()->id)->first()->token;
         $response = Http::withToken($token)->get("https://api.github.com/users/".auth()->user()->nickname)->json();
-        return $response["avatar_url"];
+        if(isset($response["avatar_url"])) {
+            $response = $response["avatar_url"];
+        } else {
+            $response = '#';
+        }
     }
 
     /**
