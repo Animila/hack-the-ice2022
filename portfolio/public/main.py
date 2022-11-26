@@ -1,14 +1,5 @@
 import re
-from browser import document, console
-
-textarea = document.getElementById('textarea')
-text_html = document.getElementById('text-html')
-
-def change_textarea(ev):
-	html = MdToHtml(textarea.value).translate()
-	text_html.innerHTML = html
-
-textarea.bind("input", change_textarea)
+from browser import document, console, window
 
 
 class MdToHtml:
@@ -441,3 +432,16 @@ class MdToHtml:
 
 		s = "".join(i_r)
 		return s
+
+
+textarea = document.getElementById('textarea')
+text_html = document.getElementById('text-html')
+
+def change_textarea(ev):
+	html = MdToHtml(textarea.value).translate()
+	text_html.innerHTML = html
+
+textarea.bind("input", change_textarea)
+textarea.innerHTML = "# Это редактор md-файл"
+change_textarea(1)
+window.change_textarea = change_textarea

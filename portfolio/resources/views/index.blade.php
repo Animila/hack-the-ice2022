@@ -68,6 +68,8 @@
 
     <script>
         function load(url) {
+
+
             url = new URL(url)
             console.log(url)
             var httpRequest = false;
@@ -99,10 +101,11 @@
         }
 
         function alertContents(httpRequest) {
-
             if (httpRequest.readyState === 4) {
                 if (httpRequest.status === 200) {
+
                     document.querySelector('#textarea').innerHTML = httpRequest.responseText;
+                    change_textarea(1)
                 } else {
                     alert('С запросом возникла проблема.');
                 }
@@ -110,8 +113,8 @@
 
         }
     </script>
+
     <script src="{{asset('js/Brython-3.8.10/brython.js')}}"></script>
     <script src="{{asset('js/Brython-3.8.10/brython_stdlib.js')}}"></script>
     <script type="text/python" src="{{asset('main.py')}}"></script>
-
 @endsection
