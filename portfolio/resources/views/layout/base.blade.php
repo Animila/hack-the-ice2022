@@ -10,13 +10,12 @@
 
         <title>MPIT</title>
     </head>
-    <body>
+    <body onload="brython()">
         @include('layout.navbar')
 
         @yield('content')
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
-        <script src="{{asset("/js/mdconverter.js")}}"></script>
         <script src="{{asset("/js/editor.js")}}"></script>
         <script src="{{asset("/js/jquery-3.6.1.min.js")}}"></script>
         <script src="{{asset("/js/jquery_cookie.js")}}" type="text/javascript"></script>

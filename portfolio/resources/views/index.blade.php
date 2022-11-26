@@ -57,10 +57,10 @@
             <div id="view-button" class="view-button button">Preview</div>
         </div>
         <div class="fullsize-editor">
-            <textarea id="markdown" class="edit_block block" spellcheck="false">
+            <textarea id="textarea" class="edit_block block" spellcheck="false">
 
         </textarea>
-            <article id="preview" class="block">
+            <article id="text-html" class="block">
             </article>
 
         </div>
@@ -102,7 +102,7 @@
 
             if (httpRequest.readyState === 4) {
                 if (httpRequest.status === 200) {
-                    document.querySelector('#markdown').innerHTML = httpRequest.responseText;
+                    document.querySelector('#textarea').innerHTML = httpRequest.responseText;
                 } else {
                     alert('С запросом возникла проблема.');
                 }
@@ -110,5 +110,8 @@
 
         }
     </script>
+    <script src="{{asset('js/Brython-3.8.10/brython.js')}}"></script>
+    <script src="{{asset('js/Brython-3.8.10/brython_stdlib.js')}}"></script>
+    <script type="text/python" src="{{asset('main.py')}}"></script>
 
 @endsection

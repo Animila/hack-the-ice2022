@@ -39,7 +39,7 @@ class GetController extends Controller
                         'url'=>$item['download_url']];
             }
         }
-        print_r($files);
+//        print_r($files);
 
         return [$nick, $files];
 
