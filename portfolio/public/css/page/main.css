@@ -1,0 +1,19 @@
+main {
+    margin: 5vw 20.8vw;
+}
+.description {}
+.description__title {
+    text-align: center;
+    font-size: 4vw;
+    margin: 0;
+}
+.description__subtitle {
+    text-align: center;
+    font-size: 1.5vw;
+    margin: 1vw;
+}
+.description__text {
+    text-align: center;
+    font-size: 2.2vw;
+    margin-top: 2vw;
+}

@@ -1,0 +1,26 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #256D85;
+    padding: 10px;
+    color: #fff;
+}
+
+.header_section {
+    display: flex;
+    align-items: center;
+}
+
+.header_item {
+    padding: 10px 15px;
+    font-family: Arial;
+    text-decoration: none;
+    color: white;
+}
+
+.header_item:hover {
+    padding: 10px 15px;
+    font-family: Arial;
+    cursor: pointer;
+    color: #6b7280;
+}

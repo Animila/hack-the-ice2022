@@ -15,14 +15,5 @@
         </form>
     </div>
 
-    <script>
-        function send() {
-            var e = document.getElementById("sel");
-            var value = e.value;
-            api = "{{config('app.url')}}/redactor/"+value
-            document.location.href = api;
-        }
-    </script>
-
 
 @endsection
